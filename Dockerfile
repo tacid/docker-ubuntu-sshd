@@ -10,6 +10,7 @@ RUN apt update && apt install -y --no-install-recommends \
         bind9-host \
         ca-certificates \
         git \
+        rake \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -L https://bit.ly/janus-bootstrap | bash && mkdir -p /root/.vim/colors
