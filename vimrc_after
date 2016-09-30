@@ -1,0 +1,73 @@
+"set expandtab
+"set tabstop=4
+"set shiftwidth=2
+
+"execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+color codeschool
+set ai
+let g:tagbar_ctags_bin="/usr/local/bin/exctags"
+let g:NERDTreeWinPos = "right"
+"autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> correctly
+
+nmap <F8> :TagbarToggle<CR>
+nmap <F3> :NERDTreeToggle<CR>
+"map <F6> <Plug>HoboInstantiate
+
+" eruby highlighting:
+"autocmd BufNewFile,BufRead *.dryml setlocal filetype=eruby
+"autocmd BufNewFile,BufRead *.dryml syn match htmlTagName contained
+"\<\([a-zA-Z0-9-]\+\)\>"
+
+" OR xml highlighting (+ indentation)
+au! BufRead,BufNewFile *.dryml  let b:eruby_subtype='xml'|set filetype=eruby
+
+" ==============================================================================
+" "Quick"                   Быстрые настройки {{{1
+"
+" ==============================================================================
+" (0 - откл. 1 - вкл.)
+
+
+let s:us_folding        = 1     " Свертывание участков кода
+
+" ==============================================================================
+" "Folding"                 Свертывание блоков текста {{{1
+" ==============================================================================
+
+if s:us_folding
+    " Включение складок
+    set foldenable
+
+    " Ширина колонки
+    "set foldcolumn=4
+
+    " Опция задаёт значение опции 'foldlevel' в начале редактирования нового
+    " буфера в окне. Её полезно использовать для закрытия всех складок в
+    " файле в начале редактирования (при значении 0), закрытия некоторых
+    " складок (при значении от 1) или открывания всех складок (при значении 99)
+    set foldlevelstart=20
+
+    " Опция задаёт метод образования складок для текущего окна.
+    " Список возможных значений:
+    "   manual  Складки создаются вручную.
+    "   indent  Складка формируется строками с одинаковыми отступами.
+    "   expr    Уровень складки для строки задаётся значением опции 'foldexpr'.
+    "   marker  Складки задаются с использованием маркеров.
+    "   syntax  Складки задаются в соответствии с правилами подсветки синтаксиса.
+    "   diff    В складки помещаются неизменённые фрагменты текста
+    set foldmethod=indent
+
+    " Опция назначает максимальное количество вложений складок для методов
+    " "indent" и "syntax". Опция позволяет избежать создания слишком
+    " большого количества складок. Использование значения, большего, чем 20,
+    " не работает, поскольку встроенное ограничение количества вложений в
+    " складках соответствует 20
+    set foldnestmax=3
+
+else
+    set foldmethod=manual
+
+endif
