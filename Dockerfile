@@ -12,6 +12,7 @@ RUN apt update && apt install -y --no-install-recommends \
         git \
         rake \
         sudo \
+        apt-transport-https \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -L https://bit.ly/janus-bootstrap | bash && mkdir -p /root/.vim/colors
