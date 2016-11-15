@@ -9,6 +9,7 @@ RUN apt update && apt install -y --no-install-recommends \
         iputils-ping \
         bind9-host \
         ca-certificates \
+        fakeroot \
         git \
         rake \
         sudo \
