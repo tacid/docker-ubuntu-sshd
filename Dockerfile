@@ -13,6 +13,7 @@ RUN apt update && apt install -y --no-install-recommends \
         git \
         rake \
         sudo \
+        bash-completion \
         apt-transport-https \
     && rm -rf /var/lib/apt/lists/*
 
