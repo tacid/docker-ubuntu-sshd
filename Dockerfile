@@ -15,6 +15,7 @@ RUN apt update && apt install -y --no-install-recommends \
         sudo \
         bash-completion \
         apt-transport-https \
+        locales \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -L https://bit.ly/janus-bootstrap | bash && mkdir -p /root/.vim/colors
@@ -26,6 +27,8 @@ COPY vimrc_after /root/.vimrc.after
 COPY codeschool.vim /root/.vim/colors/
 COPY bashrc /root/.bashrc
 COPY gitconfig /root/.gitconfig
+
+RUN locale-gen ru_RU.UTF-8 en_US.UTF-8 && update-locale
 
 RUN mkdir -p /root/.ssh/ \
     && mkdir /var/run/sshd \
